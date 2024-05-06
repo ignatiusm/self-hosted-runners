@@ -14,7 +14,7 @@ fi
 ACTIONS_URL="https://api.github.com/repos/${GITHUB_ORG}/${GITHUB_REPO}/actions/runners/registration-token"
 echo "Requesting registration URL at '${ACTIONS_URL}'"
 
-PAYLOAD=$(curl -sX POST -H "Authorization: token ${PERSONAL_ACCESS_TOKEN}" ${ACTIONS_URL})
+PAYLOAD=$(curl -sX POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${PERSONAL_ACCESS_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" ${ACTIONS_URL})
 export RUNNER_TOKEN=$(echo $PAYLOAD | jq .token --raw-output)
 
 printf "\n\033[0;44m---> Configuring the runner.\033[0m\n"
