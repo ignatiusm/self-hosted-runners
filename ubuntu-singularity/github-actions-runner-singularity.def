@@ -41,3 +41,8 @@ Stage: build
     echo "Container was created $NOW"
     echo "Arguments received: $*"
     exec /bin/bash /entrypoint.sh "$@"
+
+%startscript
+    echo "Container was created $NOW"
+    echo "Arguments received: $*"
+    exec /bin/bash /entrypoint.sh "$@"
